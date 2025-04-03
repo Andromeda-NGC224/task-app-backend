@@ -14,14 +14,6 @@ export class TaskService {
     return await this.taskRepository.find()
   }
 
-  async findOne(id: number): Promise<Task> {
-    const task = await this.taskRepository.findOne({ where: { id } })
-    if (!task) {
-      throw new NotFoundException(`Task with ID ${id} not found`)
-    }
-    return task
-  }
-
   async create(task: Partial<Task>): Promise<Task> {
     return await this.taskRepository.save(task)
   }
