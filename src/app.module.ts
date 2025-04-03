@@ -9,25 +9,28 @@ const postgresPort = env('POSTGRESDB_PORT')
 const postgresUser = env('POSTGRESDB_USER')
 const postgresPassword = env('POSTGRESDB_PASSWORD')
 const postgresName = env('POSTGRESDB_NAME')
-const postgresUrl = env('DATABASE_URL')
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: postgresUrl,
-      ssl: true,
+      url: process.env.DATABASE_URL,
+      ssl: process.env.DATABASE_URL
+        ? {
+            rejectUnauthorized: false,
+          }
+        : false,
       extra: {
         ssl: {
           rejectUnauthorized: false, // відображення SSL-помилок
         },
       },
-      host: postgresHost || 'localhost',
-      port: parseInt(postgresPort, 10) || 5432,
-      username: postgresUser,
-      password: postgresPassword,
-      database: postgresName,
+      host: process.env.DATABASE_URL ? null : postgresHost,
+      port: process.env.DATABASE_URL ? null : parseInt(postgresPort, 10),
+      username: process.env.DATABASE_URL ? null : postgresUser,
+      password: process.env.DATABASE_URL ? null : postgresPassword,
+      database: process.env.DATABASE_URL ? null : postgresName,
       autoLoadEntities: true,
       synchronize: true,
     }),
