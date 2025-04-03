@@ -1,0 +1,33 @@
+{
+  "name": "task-app-backend",
+  "version": "1.0.0",
+  "description": "task-app-backend",
+  "type": "commonjs",
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node src/main.js"
+  },
+  "keywords": [],
+  "author": "Dmytro Shapoval",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "eslint": "^9.2.0",
+    "globals": "^15.1.0"
+  },
+  "dependencies": {
+    "@nestjs/cli": "^11.0.5",
+    "@nestjs/common": "^11.0.13",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.0.13",
+    "@nestjs/platform-express": "^11.0.13",
+    "@nestjs/typeorm": "^11.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "dotenv": "^16.4.7",
+    "pg": "^8.14.1",
+    "typeorm": "^0.3.22"
+  }
+}
